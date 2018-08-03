@@ -13,7 +13,7 @@ module.exports = function(environment) {
       // requestCredentials: 'same-origin' // other choices: 'include', 'omit'
     },
     fastboot: {
-      hostWhitelist: ['opc.ai', 'https://openpilot-community.herokuapp.com/', /^localhost:\d+$/]
+      hostWhitelist: ['opc.ai', 'opc-vehicledb.herokuapp.com', 'openpilot-community.herokuapp.com', /^localhost:\d+$/]
     },
     EmberENV: {
       FEATURES: {
