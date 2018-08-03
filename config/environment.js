@@ -54,7 +54,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.apiBaseUrl = 'https://openpilot-community.herokuapp.com/';
+    ENV.apiBaseUrl = 'https://openpilot-community.herokuapp.com';
     // here you can enable a production-specific feature
   }
 
