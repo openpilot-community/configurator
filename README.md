@@ -5,6 +5,18 @@ It is used to share links to your configuration of openpilot, including the hard
 
 <3 jfrux
 
+## Disclaimer
+> The Openpilot Community and The Openpilot Documentation Project and The Configurator are community supported projects.
+> 
+> The "Comma", "Openpilot", "ChffrPlus", "EON", "Panda", and "Giraffe" are registered trademarks of Comma.ai, Inc.
+> This respository, and it's affiliated code are not endorsed, or supported by Comma.ai, Inc.
+> 
+> Nothing created or published by this community or it's affiliated websites will enable your vehicle to > be super-human and drive itself.  
+> You must keep your eyes on the road and your hands on the wheel at all times.
+> This tool is for research purposes only.
+> 
+> Use this at your own risk.
+
 ## Development
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
