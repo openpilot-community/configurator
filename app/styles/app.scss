@@ -5,9 +5,9 @@ html {
 
 body {
   background-color: #151719;
-  font-family: MaisonNeue,sans-serif;
+  font-family: MaisonNeue, sans-serif;
   margin: 0;
-  padding: 0
+  padding: 60px 0 0 0;
 }
 
 ::-webkit-scrollbar-track {
@@ -41,16 +41,33 @@ body {
 
 @import "fonts";
 
+.navbar-comma {
+}
 .navbar-brand {
   color: #fff;
   font-size: 0.875rem;
   font-weight: 400;
+  font-size:22px;
   font-family: MaisonNeue;
-  line-height: 1.46429em;
-  font-size: 22px;
-  font-family: MaisonNeueExtended;
   font-weight: 600;
+  letter-spacing: 0.05em;
+  padding-left:40px;
+  position:relative;
+  span.logo-part1 {
+    font-weight:500;
+  }
+  span.logo-part2 {
+    font-weight:100;
+  }
+  img {
+    height: 36px;
+    margin-right: 12px;
+    position: absolute;
+    top: 50%;
+    left:0;
+    transform: translateY(-50%);
+  }
 }
 .bg-comma {
-  background-color:#000;
+  background-color:#1e2224;
 }

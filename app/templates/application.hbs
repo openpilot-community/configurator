@@ -2,15 +2,16 @@
 {{#bs-navbar type="dark" backgroundColor="comma" position="fixed-top" collapsed=collapsed onCollapse=(action (mut collapsed) true) onExpand=(action (mut collapsed) false) as |navbar|}}
   <div class="navbar-header">
     {{navbar.toggle}}
-    {{#link-to "index" class="navbar-brand"}}Configurator{{/link-to}}
+    {{#link-to "index" class="navbar-brand"}}
+    <img src="/assets/images/comma-in-bubble-white.png" /> <span class="logo-part1">vehicle</span><span class="logo-part2">db</span>{{/link-to}}
   </div>
   {{#navbar.content}}
     {{#navbar.nav class="mr-auto" as |nav|}}
-      {{#nav.item}}{{#nav.link-to "index"}}Home{{/nav.link-to}}{{/nav.item}}
-      {{#nav.item}}{{#nav.link-to "configurations"}}Configurations{{/nav.link-to}}{{/nav.item}}
+      {{!-- {{#nav.item}}{{#nav.link-to "index"}}Home{{/nav.link-to}}{{/nav.item}} --}}
+      {{#nav.item}}{{#nav.link-to "configurations"}}Browse{{/nav.link-to}}{{/nav.item}}
     {{/navbar.nav}}
     {{#navbar.nav class="ml-auto" as |nav|}}
-      {{#bs-button type="light" onClick=(action "login")}}{{fa-icon 'github' prefix="fab"}} Log In with GitHub{{/bs-button}}
+      {{#bs-button type="dark" outline=true onClick=(action "login")}}{{fa-icon 'github' prefix="fab"}} Log In with GitHub{{/bs-button}}
       {{#nav.dropdown as |dd|}}
         {{#dd.toggle}}
           {{fa-icon 'user-circle'}} jfrux <span class="caret"></span>{{/dd.toggle}}

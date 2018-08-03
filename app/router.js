@@ -7,7 +7,9 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
-  this.route('configurations', function() {
+  this.route('configurations', {
+    path: '/c'
+  }, function() {
     this.route('show', {
       path: "/:id"
     });
