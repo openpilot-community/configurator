@@ -1,0 +1,9 @@
+{{#each model as |config|}}
+<div>
+  {{#link-to 'configurations.show' config.id}}{{config.title}}{{/link-to}}
+</div>
+{{/each}}
+
+<div>
+{{outlet}}
+</div>
