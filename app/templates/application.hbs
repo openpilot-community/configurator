@@ -12,16 +12,17 @@
     {{/navbar.nav}}
     {{#navbar.nav class="ml-auto" as |nav|}}
       {{#bs-button type="dark" outline=true onClick=(action "login")}}{{fa-icon 'github' prefix="fab"}} Log In with GitHub{{/bs-button}}
-      {{#nav.dropdown as |dd|}}
+      {{!-- {{#nav.dropdown as |dd|}}
         {{#dd.toggle}}
           {{fa-icon 'user-circle'}} jfrux <span class="caret"></span>{{/dd.toggle}}
           {{#dd.menu align="right" as |ddm|}}
             {{#ddm.item}}{{#ddm.link-to "index"}}Settings{{/ddm.link-to}}{{/ddm.item}}
             {{#ddm.item}}{{#ddm.link-to "user.vehicles"}}My Vehicles{{/ddm.link-to}}{{/ddm.item}}
           {{/dd.menu}}
-      {{/nav.dropdown}}
+      {{/nav.dropdown}} --}}
     {{/navbar.nav}}
   {{/navbar.content}}
 {{/bs-navbar}}
-
-{{outlet}}
+<div class="container-fluid">
+  {{outlet}}
+</div>

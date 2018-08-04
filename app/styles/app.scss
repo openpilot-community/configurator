@@ -2,11 +2,14 @@
 html {
   font-size: 16px
 }
-
+html,body {
+  height: 100%;
+}
 body {
   background-color: #151719;
   font-family: MaisonNeue, sans-serif;
   margin: 0;
+  color:#FFF;
   padding: 60px 0 0 0;
 }
 
@@ -41,8 +44,18 @@ body {
 
 @import "fonts";
 
-.navbar-comma {
+.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+  padding-left:0;
+  padding-right:0;
+  > .col,
+  > [class*="col-"] {
+    padding-right: 0;
+    padding-left: 0;
+  }
 }
+
 .navbar-brand {
   color: #fff;
   font-size: 0.875rem;

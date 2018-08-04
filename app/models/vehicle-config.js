@@ -7,6 +7,6 @@ export default DS.Model.extend({
   year: DS.attr('number'),
   make: DS.belongsTo('vehicle-make'),
   model: DS.belongsTo('vehicle-model'),
-  createdAt: DS.attr('datetime'),
-  updatedAt: DS.attr('datetime')
+  createdAt: DS.attr('date'),
+  updatedAt: DS.attr('date')
 });
