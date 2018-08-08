@@ -13,7 +13,7 @@ module.exports = function(environment) {
       // requestCredentials: 'same-origin' // other choices: 'include', 'omit'
     },
     fastboot: {
-      hostWhitelist: ['opc.ai', 'opc-vehicledb.herokuapp.com', 'openpilot-community.herokuapp.com', /^localhost:\d+$/]
+      hostWhitelist: ['opc.ai', 'opc-vehicledb.herokuapp.com', 'opc-vehicledb-api.herokuapp.com', /^localhost:\d+$/]
     },
     EmberENV: {
       FEATURES: {
@@ -54,7 +54,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.apiBaseUrl = 'https://openpilot-community.herokuapp.com';
+    ENV.apiBaseUrl = 'https://opc-vehicledb-api.herokuapp.com';
     // here you can enable a production-specific feature
   }
 
