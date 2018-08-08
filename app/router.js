@@ -10,6 +10,13 @@ Router.map(function() {
   this.route('configurations', {
     path: '/c'
   }, function() {
+    this.route('index', {
+      path: "/"
+    }, function() {
+      this.route('make', {
+        path: '/m/:make_slug'
+      });
+    });
     this.route('show', {
       path: "/:id"
     });
@@ -17,9 +24,6 @@ Router.map(function() {
       path: '/:id/edit'
     });
     this.route('new');
-    this.route('make', {
-      path: '?make=:make_slug'
-    });
   });
 
   this.route('user', function() {

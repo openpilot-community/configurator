@@ -3,7 +3,7 @@
     {{#bs-nav type="pills" class="navbar-dark" stacked="true" as |nav|}}
       {{#each makes as |make|}}
         {{#nav.item}}
-          {{#nav.link-to "configuration.make" make.slug class="text-light bg-dark"}}{{make.name}}{{/nav.link-to}}
+          {{#nav.link-to "configurations.index.make" make.slug class="text-light bg-dark"}}{{make.name}}{{/nav.link-to}}
           {{#bs-nav type="pills" class="navbar-dark sub-nav" stacked="true" as |subNav|}}
           {{#each make.modelsWithConfigs as |model|}}
             {{#subNav.item}}
