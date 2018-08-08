@@ -17,6 +17,9 @@ Router.map(function() {
       path: '/:id/edit'
     });
     this.route('new');
+    this.route('make', {
+      path: '?make=:make_slug'
+    });
   });
 
   this.route('user', function() {

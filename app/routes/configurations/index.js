@@ -6,7 +6,9 @@ export default Route.extend({
   // },
   model() {
     return this.get("store").findAll('vehicle-config', {
-      include: ["vehicle_make","vehicle_model","vehicle_trim"]
+      // include: ["vehicle_make","vehicle_model","vehicle_trim"]
     });
+
+    // return this.get("store").findAll('vehicle-config');
   }
 });
