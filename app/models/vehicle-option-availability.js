@@ -2,7 +2,7 @@ import DS from 'ember-data';
 
 export default DS.Model.extend({
   name: DS.attr('string'),
-  vehicleTrims: DS.hasMany(),
+  // vehicleTrims: DS.hasMany(),
   createdAt: DS.attr('date'),
   updatedAt: DS.attr('date')
 });

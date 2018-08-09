@@ -29,6 +29,7 @@ Router.map(function() {
   this.route('user', function() {
     this.route('vehicles');
   });
+  this.route('login');
 });
 
 export default Router;

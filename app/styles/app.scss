@@ -84,3 +84,20 @@ body {
 .bg-comma {
   background-color:#1e2224;
 }
+.ember-power-select-dropdown, .ember-power-select-options, .ember-power-select-selected-item {
+  color:#1e2224;
+}
+.nav-item {
+  .sub-nav {
+    display:none;
+  }
+  &.active {
+    .sub-nav {
+      display:block;
+    }
+  }
+}
+
+@import "ember-power-select/themes/bootstrap";
+
+@import "ember-power-select";

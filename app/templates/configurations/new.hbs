@@ -1,1 +1,308 @@
-{{outlet}}
+<h1>Create a configuration</h1>
+{{#bs-form 
+  formLayout=formLayout 
+  model=model 
+  onSubmit=(action "submit") 
+  novalidate=true as |form|
+}}
+  {{!-- {{form.element controlType="text" placeholder="Name of Configuration" property="title"}} --}}
+  <div class="row">
+    <div class="col">
+      {{form.element controlType="text" placeholder="Year" property="year"}}
+    </div>
+    <div class="col">
+      {{#power-select-with-create
+        options=makes
+        selected=selectedMake
+        placeholder="Make"
+        searchField="name"
+        onchange=(action "changeMake")
+        showCreateWhen=(action "hideCreateOptionOnSameName")
+        oncreate=(action "createMake") as |vehicleMake term|
+      }}
+        {{vehicleMake.name}}
+      {{/power-select-with-create}}
+    </div>
+    <div class="col">
+        {{#power-select-with-create
+          options=models
+          disabled=noSelectedMake
+          selected=selectedModel
+          searchField="name"
+          placeholder="Model"
+          onchange=(action "changeModel")
+          showCreateWhen=(action "hideCreateOptionOnSameName")
+          oncreate=(action "createModel") as |vehicleModel term|
+        }}
+          {{vehicleModel.name}}
+        {{/power-select-with-create}}
+    </div>
+
+    {{!-- <div class="col">
+        {{#power-select-with-create
+          options=trimsFiltered
+          disabled=noSelectedModel
+          selected=selectedTrim
+          searchField="name"
+          placeholder="Trim"
+          onchange=(action "changeTrim")
+          showCreateWhen=(action "hideCreateOptionOnSameName")
+          oncreate=(action "createTrim") as |vehicleTrim term|
+        }}
+          {{vehicleTrim.trim}}
+        {{/power-select-with-create}}
+    </div> --}}
+  </div>
+  {{!-- {{form.element controlType="text" label="Year" placeholder="2018" property="year" required=true}} --}}
+  {{!-- <div>
+    body: 
+  {{selectedTrim.body}}
+  </div>
+  <div>
+    enginePosition: 
+  {{selectedTrim.enginePosition}}
+  </div>
+  <div>
+    engineCc: 
+  {{selectedTrim.engineCc}}
+  </div>
+  <div>
+    engineCyl: 
+  {{selectedTrim.engineCyl}}
+  </div>
+  <div>
+    engineType: 
+  {{selectedTrim.engineType}}
+  </div>
+  <div>
+    engineValvesPerCyl: 
+  {{selectedTrim.engineValvesPerCyl}}
+  </div>
+  <div>
+    enginePowerPs: 
+  {{selectedTrim.enginePowerPs}}
+  </div>
+  <div>
+    enginePowerRpm: 
+  {{selectedTrim.enginePowerRpm}}
+  </div>
+  <div>
+    engineTorqueNm: 
+  {{selectedTrim.engineTorqueNm}}
+  </div>
+  <div>
+    engineTorqueRpm: 
+  {{selectedTrim.engineTorqueRpm}}
+  </div>
+  <div>
+    engineBoreMm: 
+  {{selectedTrim.engineBoreMm}}
+  </div>
+  <div>
+    engineStrokeMm: 
+  {{selectedTrim.engineStrokeMm}}
+  </div>
+  <div>
+    engineCompression: 
+  {{selectedTrim.engineCompression}}
+  </div>
+  <div>
+    engineFuel: 
+  {{selectedTrim.engineFuel}}
+  </div>
+  <div>
+    topSpeedKph: 
+  {{selectedTrim.topSpeedKph}}
+  </div>
+  <div>
+    zeroTo100Kph: 
+  {{selectedTrim.zeroTo100Kph}}
+  </div>
+  <div>
+    drive: 
+  {{selectedTrim.drive}}
+  </div>
+  <div>
+    drive2: 
+  {{selectedTrim.drive2}}
+  </div>
+  <div>
+    seats: 
+  {{selectedTrim.seats}}
+  </div>
+  <div>
+    seats2: 
+  {{selectedTrim.seats2}}
+  </div>
+  <div>
+    weightKg: 
+  {{selectedTrim.weightKg}}
+  </div>
+  <div>
+    lengthMm: 
+  {{selectedTrim.lengthMm}}
+  </div>
+  <div>
+    widthMm: 
+  {{selectedTrim.widthMm}}
+  </div>
+  <div>
+    heightMm: 
+  {{selectedTrim.heightMm}}
+  </div>
+  <div>
+    wheelbaseMm: 
+  {{selectedTrim.wheelbaseMm}}
+  </div>
+  <div>
+    lkmHwy: 
+  {{selectedTrim.lkmHwy}}
+  </div>
+  <div>
+    lkmMixed: 
+  {{selectedTrim.lkmMixed}}
+  </div>
+  <div>
+    lkmCity: 
+  {{selectedTrim.lkmCity}}
+  </div>
+  <div>
+    fuelCapL: 
+  {{selectedTrim.fuelCapL}}
+  </div>
+  <div>
+    soldInUs: 
+  {{selectedTrim.soldInUs}}
+  </div>
+  <div>
+    co2: 
+  {{selectedTrim.co2}}
+  </div>
+  <div>
+    forwardCollisionWarning: 
+  {{selectedTrim.name.forwardCollisionWarning}}
+  </div>
+  <div>
+    adaptiveCruiseControl: 
+  {{selectedTrim.adaptiveCruiseControl.name}}
+  </div>
+  <div>
+    laneDepartureWarning: 
+  {{selectedTrim.laneDepartureWarning.name}}
+  </div>
+  <div>
+    laneKeepingAssist: 
+  {{selectedTrim.laneKeepingAssist.name}}
+  </div>
+  <div>
+    blindSpotWarning: 
+  {{selectedTrim.blindSpotWarning.name}}
+  </div>
+  <div>
+    rearCrossTrafficAlert: 
+  {{selectedTrim.rearCrossTrafficAlert.name}}
+  </div>
+  <div>
+    backUpCamera: 
+  {{selectedTrim.backUpCamera.name}}
+  </div>
+  <div>
+    adaptiveHeadlights: 
+  {{selectedTrim.adaptiveHeadlights.name}}
+  </div>
+  <div>
+    antilockBrakingSystem: 
+  {{selectedTrim.antilockBrakingSystem.name}}
+  </div>
+  <div>
+    automaticEmergencyBraking: 
+  {{selectedTrim.automaticEmergencyBraking.name}}
+  </div>
+  <div>
+    automaticParallelParking: 
+  {{selectedTrim.automaticParallelParking.name}}
+  </div>
+  <div>
+    backupWarning: 
+  {{selectedTrim.backupWarning.name}}
+  </div>
+  <div>
+    biycleDetection: 
+  {{selectedTrim.biycleDetection.name}}
+  </div>
+  <div>
+    blindSpotMonitoring: 
+  {{selectedTrim.blindSpotMonitoring.name}}
+  </div>
+  <div>
+    brakeAssist: 
+  {{selectedTrim.brakeAssist.name}}
+  </div>
+  <div>
+    curveSpeedWarning: 
+  {{selectedTrim.curveSpeedWarning.name}}
+  </div>
+  <div>
+    drowsinessAlert: 
+  {{selectedTrim.drowsinessAlert.name}}
+  </div>
+  <div>
+    electronicStabilityControl: 
+  {{selectedTrim.electronicStabilityControl.name}}
+  </div>
+  <div>
+    highSpeedAlert: 
+  {{selectedTrim.highSpeedAlert.name}}
+  </div>
+  <div>
+    hillDescentAssist: 
+  {{selectedTrim.hillDescentAssist.name}}
+  </div>
+  <div>
+    hillStartAssist: 
+  {{selectedTrim.hillStartAssist.name}}
+  </div>
+  <div>
+    leftTurnCrashAvoidance: 
+  {{selectedTrim.leftTurnCrashAvoidance.name}}
+  </div>
+  <div>
+    pedestrianDetection: 
+  {{selectedTrim.pedestrianDetection.name}}
+  </div>
+  <div>
+    pushButtonStart: 
+  {{selectedTrim.pushButtonStart.name}}
+  </div>
+  <div>
+    sideviewCamera: 
+  {{selectedTrim.sideviewCamera.name}}
+  </div>
+  <div>
+    temperatureWarning: 
+  {{selectedTrim.temperatureWarning.name}}
+  </div>
+  <div>
+    tirePressureMonitoringSystem: 
+  {{selectedTrim.tirePressureMonitoringSystem.name}}
+  </div>
+  <div>
+    tractionControl: 
+  {{selectedTrim.tractionControl.name}}
+  </div>
+  <div>
+    obstacleDetection: 
+  {{selectedTrim.obstacleDetection.name}}
+  </div>
+  <div>
+    createdAt: 
+  {{selectedTrim.createdAt}}
+  </div>
+  <div>
+    updatedAt: 
+  {{selectedTrim.updatedAt}}
+  </div> --}}
+  
+  
+  {{bs-button defaultText="Submit" type="primary" buttonType="submit"}}
+{{/bs-form}}

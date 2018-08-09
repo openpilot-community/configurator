@@ -12,6 +12,15 @@ module.exports = function(environment) {
       // to control when a cookie is sent:
       // requestCredentials: 'same-origin' // other choices: 'include', 'omit'
     },
+    // 'ember-simple-auth': {
+    //   authenticationRoute: 'login',
+    //   auth0: {
+    //     clientID: process.env.AUTH0_CLIENT_ID,
+    //     domain: 'vehicledb.auth0.com',
+    //     logoutReturnToURL: '/logout',
+    //     enableImpersonation: false
+    //   }
+    // },
     fastboot: {
       hostWhitelist: ['opc.ai', 'opc-vehicledb.herokuapp.com', 'opc-vehicledb-api.herokuapp.com', /^localhost:\d+$/]
     },
