@@ -11,9 +11,10 @@ module.exports = function(defaults) {
     },
     'fontawesome': {
       icons: {
-        'free-solid-svg-icons': [
+        'pro-regular-svg-icons': [
           'user',
-          'user-circle'
+          'user-circle',
+          'align-justify'
         ],
         'free-brands-svg-icons': [
           'github'

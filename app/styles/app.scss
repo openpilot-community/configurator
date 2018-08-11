@@ -1,4 +1,5 @@
 @import "ember-bootstrap/bootstrap";
+$topbar: 50px;
 html {
   font-size: 16px
 }
@@ -6,41 +7,41 @@ html,body {
   height: 100%;
 }
 body {
-  background-color: #151719;
+  background-color: #FFF;
   font-family: MaisonNeue, sans-serif;
   margin: 0;
-  color:#FFF;
-  padding: 60px 0 0 0;
+  color:#000;
+  padding: $topbar 0 0 0;
 }
 
-::-webkit-scrollbar-track {
-  background-color: transparent;
-  border-radius: 8px;
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.2);
-  box-shadow: inset 0 0 6px rgba(0,0,0,.2)
-}
+// ::-webkit-scrollbar-track {
+//   background-color: transparent;
+//   border-radius: 8px;
+//   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.2);
+//   box-shadow: inset 0 0 6px rgba(0,0,0,.2)
+// }
 
-::-webkit-scrollbar {
-  background-color: transparent;
-  width: 12px
-}
+// ::-webkit-scrollbar {
+//   background-color: transparent;
+//   width: 12px;
+// }
 
-::-webkit-scrollbar-thumb {
-  background-color: #49545b;
-  border-radius: 8px;
-  -webkit-box-shadow: inset 0 0 6px hsla(0,0%,100%,.125),0 0 6px rgba(0,0,0,.3);
-  box-shadow: inset 0 0 6px hsla(0,0%,100%,.125),0 0 6px rgba(0,0,0,.3)
-}
+// ::-webkit-scrollbar-thumb {
+//   background-color: #49545b;
+//   border-radius: 8px;
+//   -webkit-box-shadow: inset 0 0 6px hsla(0,0%,100%,.125),0 0 6px rgba(0,0,0,.3);
+//   box-shadow: inset 0 0 6px hsla(0,0%,100%,.125),0 0 6px rgba(0,0,0,.3)
+// }
 
-::-webkit-scrollbar-thumb:hover {
-  background-color: #596971
-}
+// ::-webkit-scrollbar-thumb:hover {
+//   background-color: #596971
+// }
 
-::-webkit-scrollbar-thumb:active {
-  background-color: #49545b;
-  -webkit-box-shadow: none;
-  box-shadow: none
-}
+// ::-webkit-scrollbar-thumb:active {
+//   background-color: #49545b;
+//   -webkit-box-shadow: none;
+//   box-shadow: none
+// }
 
 @import "fonts";
 
@@ -55,16 +56,50 @@ body {
     padding-left: 0;
   }
 }
-
+.navbar {
+  padding:0;
+  border:0;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  overflow: visible;
+  // height: 50px;
+  // padding: 0 8px;
+  z-index: 2;
+  font-size: .85em;
+  color: #7e888b;
+  top: 0;
+  left: 0;
+  width: 100%;
+  position:fixed;
+  z-index: 0;
+  height:$topbar;
+  background: 0 0;
+  background-color: #FFF;
+  z-index: 2;
+  // border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+.navbar-header {
+  padding:0;
+  width:300px;
+  max-width:300px;
+  background-color: #000;
+  a {
+    display: block;
+    width: 153px;
+    height: 100%;
+    line-height: 50px;
+    padding: 0 1rem 0 2.5rem;
+    margin: 0 auto;
+  }
+}
 .navbar-brand {
-  color: #fff;
+  color: #fff!important;
   font-size: 0.875rem;
   font-weight: 400;
-  font-size:22px;
+  font-size: 22px;
   font-family: MaisonNeue;
   font-weight: 600;
   letter-spacing: 0.05em;
-  padding-left:40px;
+  padding-left: 40px;
   position:relative;
   span.logo-part1 {
     font-weight:500;
@@ -81,23 +116,147 @@ body {
     transform: translateY(-50%);
   }
 }
+.navbar-collapse {
+  position:relative;
+  background-color:#FFF;
+  .btn {
+    color: #ccc;
+  }
+  &:after {
+    content:"";
+    position:absolute;
+    bottom:0;
+    height:1px;
+    width:100%;
+    left:0;
+    background-color:rgba(#000,0.2);
+  }
+  .nav-link {
+    line-height:50px;
+    padding-top:0;
+    padding-bottom:0;
+    color: #ccc;
+  }
+}
 .bg-comma {
-  background-color:#1e2224;
+  background-color:#000;
 }
 .ember-power-select-dropdown, .ember-power-select-options, .ember-power-select-selected-item {
   color:#1e2224;
 }
-.nav-item {
-  .sub-nav {
-    display:none;
-  }
-  &.active {
-    .sub-nav {
-      display:block;
+.nav-pills .nav-link {
+  border-radius:0;
+}
+.split-view-content {
+  position: absolute;
+  top: 0px;
+  padding-left: 0;
+  padding-right: 0;
+  right: 0px;
+  left: 0px;
+  bottom: 0px;
+  overflow-y: auto;
+  left:300px;
+  color: black;
+  background: white;
+  -webkit-transition: left 250ms ease;
+  -moz-transition: left 250ms ease;
+  -o-transition: left 250ms ease;
+  transition: left 250ms ease;
+
+  .page-content {
+    padding:65px 25px 110px 25px;
+
+    >*:first-child {
+        margin-top: 0 !important;
     }
   }
 }
-
+.split-view-nav {
+  padding: 50px 0 50px 0;
+  position: absolute;
+  height: 100%;
+  width: 300px;
+  top: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: #000;
+  font-size:16px;
+  a {
+    color:#777;
+  }
+  > .parent-nav {
+    > .nav-item {
+      > a {
+        padding: 10px 15px;
+        padding-top: 20px;
+        text-transform: uppercase;
+        color: #939da3;
+      }
+      
+      > ul { 
+        > li {
+          > a { 
+              padding-left: 30px;
+          }
+          > ul { 
+            > li {
+              > a { 
+                  padding-left: 60px;
+                  padding-top:5px;
+                  padding-bottom:5px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  a {
+    background-color:#000!important;
+  }
+  .nav {
+    display:none;
+  }
+  > .nav {
+    display:block;
+  }
+  .nav-item {
+    display:block;
+    &.active {
+      > .nav {
+        display:block;
+      }
+    }
+  }
+}
+.nav-item {
+  border-radius:0;
+  
+  &.active {
+    background-color:darken(#343a40,0.10);
+  }
+}
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+  position: relative;
+}
+h1 {
+  padding-bottom: 0.3em;
+  font-size: 2em;
+  border-bottom: 1px solid #eaecef;
+}
+h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.5em;
+  border-bottom: 1px solid #eaecef;
+}
+h3 {
+  font-size: 1.25em;
+}
 @import "ember-power-select/themes/bootstrap";
 
 @import "ember-power-select";

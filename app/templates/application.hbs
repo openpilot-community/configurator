@@ -1,16 +1,15 @@
 {{head-layout}}
-{{#bs-navbar type="dark" backgroundColor="comma" position="fixed-top" collapsed=collapsed onCollapse=(action (mut collapsed) true) onExpand=(action (mut collapsed) false) as |navbar|}}
-  <div class="navbar-header">
+{{#bs-navbar position="fixed-top" collapsed=collapsed onCollapse=(action (mut collapsed) true) onExpand=(action (mut collapsed) false) as |navbar|}}
+  <div class="navbar-header col-3">
     {{navbar.toggle}}
     {{#link-to "index" class="navbar-brand"}}
     <img src="/assets/images/comma-in-bubble-white.png" /> <span class="logo-part1">vehicle</span><span class="logo-part2">db</span>{{/link-to}}
   </div>
-  {{#navbar.content}}
+  {{#navbar.content class="col-9"}}
     {{#navbar.nav class="mr-auto" as |nav|}}
-      {{!-- {{#nav.item}}{{#nav.link-to "index"}}Home{{/nav.link-to}}{{/nav.item}} --}}
-      {{#nav.item}}{{#nav.link-to "configurations"}}Browse{{/nav.link-to}}{{/nav.item}}
+      {{#nav.item}}{{#nav.link-to "index"}}{{fa-icon "align-justify"}}{{/nav.link-to}}{{/nav.item}}
     {{/navbar.nav}}
-    {{#navbar.nav class="ml-auto" as |nav|}}
+    {{!-- {{#navbar.nav class="ml-auto" as |nav|}} --}}
       {{!-- {{#if session.isAuthenticated}}
         {{#nav.dropdown as |dd|}}
           {{#dd.toggle}}
@@ -26,9 +25,41 @@
         {{#bs-button type="dark" outline=true onClick=(action "login")}}{{fa-icon 'github' prefix="fab"}} Log In with GitHub{{/bs-button}}
       {{/if}} --}}
       {{!--  --}}
-    {{/navbar.nav}}
+    {{!-- {{/navbar.nav}} --}}
   {{/navbar.content}}
 {{/bs-navbar}}
+
 <div class="container-fluid">
-  {{outlet}}
+  <div class="split-view row">
+    <div class="split-view-nav col-3">
+      {{#bs-nav type="pills" class="navbar-dark parent-nav" as |parentNav|}}
+        {{#parentNav.item}}
+          {{#parentNav.link-to "vehicles"}}Vehicles{{/parentNav.link-to}}
+          {{#bs-nav type="pills" class="navbar-dark" stacked="true" as |vehicleMakeNav|}}
+            {{#each makes as |make|}}
+              {{#vehicleMakeNav.item}}
+                {{#vehicleMakeNav.link-to "vehicles.make" make.slug}}
+                  {{make.name}}
+                {{/vehicleMakeNav.link-to}}
+                {{#bs-nav type="pills" class="navbar-dark sub-nav" stacked="true" as |vehicleModelNav|}}
+                  {{#each make.modelsWithConfigs as |vehicleModel|}}
+                    {{#vehicleModelNav.item}}
+                      {{#vehicleModelNav.link-to "vehicles.make.model" make.slug vehicleModel.slug}}
+                        {{vehicleModel.name}}
+                      {{/vehicleModelNav.link-to}}
+                    {{/vehicleModelNav.item}}
+                  {{/each}}
+                {{/bs-nav}}
+              {{/vehicleMakeNav.item}}
+            {{/each}}
+          {{/bs-nav}}
+        {{/parentNav.item}}
+      {{/bs-nav}}
+    </div>
+    <div class="split-view-content col-9">
+      <div class="page-content">
+        {{outlet}}  
+      </div>
+    </div>
+  </div>
 </div>

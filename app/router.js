@@ -7,23 +7,21 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
-  this.route('configurations', {
-    path: '/c'
+  this.route('vehicles', {
+    path: '/v'
   }, function() {
-    this.route('index', {
-      path: "/"
-    }, function() {
-      this.route('make', {
-        path: '/m/:make_slug'
+    this.route('make', {
+      path: '/:make_slug'
+    },function() {
+      this.route('model', {
+        path: "/:model_slug"
       });
+      this.route('edit', {
+        path: '/edit'
+      });
+      this.route('new');
     });
-    this.route('show', {
-      path: "/:id"
-    });
-    this.route('edit', {
-      path: '/:id/edit'
-    });
-    this.route('new');
+    
   });
 
   this.route('user', function() {
