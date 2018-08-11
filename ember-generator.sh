@@ -1,0 +1,32 @@
+ember g model contributor username:string avatar_url:string html_url:string contributions:number created_at:date updated_at:date
+ember g model friendly_id_slug slug:string sluggable:belongsTo sluggable_type:string scope:string created_at:date
+ember g model hardware_item name:string alternate_name:string description:string hardware_type:belongsTo compatible_with_all_vehicles:boolean available_for_purchase:boolean purchase_url:string requires_assembly:boolean can_be_built:boolean build_plans_url:string notes:string image_url:string install_guide_url:string created_at:date updated_at:date
+ember g model hardware_type name:string description:string created_at:date updated_at:date
+ember g model login identification:string password_digest:string oauth2_token:string uid:string single_use_oauth2_token:string user:belongsTo created_at:date updated_at:date provider:string
+ember g model modification name:string summary:string description:string instructions:string created_at:date updated_at:date
+ember g model pull_request name:string number:string title:string state:string locked:string user:string body:string pr_created_at:string pr_updated_at:string closed_at:string merged_at:string merge_commit_sha:string head:string author_association:string html_url:string created_at:date updated_at:date
+ember g model repository name:string full_name:string owner_login:string owner_avatar_url:string owner_url:string url:string created_at:date updated_at:date
+ember g model user username:string email:string slack_username:string github_username:string created_at:date updated_at:date avatar_url:string
+ember g model vehicle_capability name:string description:string created_at:date updated_at:date
+ember g model vehicle_config_capability vehicle_config:belongsTo vehicle_capability:belongsTo kph:number timeout:number confirmed:boolean confirmed_by:number notes:string created_at:date updated_at:date vehicle_config_type:belongsTo
+ember g model vehicle_config_hardware vehicle_config:belongsTo hardware_item:belongsTo created_at:date updated_at:date
+ember g model vehicle_config_pull_request vehicle_config:belongsTo pull_request:belongsTo created_at:date updated_at:date
+ember g model vehicle_config_repository vehicle_config:belongsTo repository:belongsTo created_at:date updated_at:date
+ember g model vehicle_config_required_option vehicle_config:belongsTo vehicle_option:belongsTo created_at:date updated_at:date
+ember g model vehicle_config_required_package vehicle_config:belongsTo vehicle_make_package:belongsTo created_at:date updated_at:date
+ember g model vehicle_config_status name:string description:string created_at:date updated_at:date
+ember g model vehicle_config_type name:string description:string difficulty_level:number created_at:date updated_at:date
+ember g model vehicle_config_video vehicle_config:belongsTo video:belongsTo created_at:date updated_at:date
+ember g model vehicle_config title:string year:number vehicle_make:belongsTo vehicle_model:belongsTo vehicle_trim:belongsTo vehicle_config_status:belongsTo description:string created_at:date updated_at:date vehicle_make_package:belongsTo slug:string parent:belongsTo vehicle_config_type:belongsTo
+ember g model vehicle_make_package name:string vehicle_make:belongsTo created_at:date updated_at:date
+ember g model vehicle_make name:string created_at:date updated_at:date slack_channel:string slug:string
+ember g model vehicle_model_option vehicle_year:number vehicle_make:belongsTo vehicle_model:belongsTo vehicle_option:belongsTo vehicle_option_availability:belongsTo created_at:date updated_at:date
+ember g model vehicle_model name:string vehicle_make:belongsTo tmp_make_name:string created_at:date updated_at:date slug:string
+ember g model vehicle_option_availability name:string created_at:date updated_at:date
+ember g model vehicle_option name:string description:string created_at:date updated_at:date alternate_name:string what_it_does:string what_it_doesnt_do:string reference_url:string
+ember g model vehicle_trim vehicle_make:belongsTo vehicle_model:belongsTo make_id:string make_display:string name:string trim:string year:string body:string engine_position:string engine_cc:number engine_cyl:number engine_type:string engine_valves_per_cyl:number engine_power_ps:string engine_power_rpm:number engine_torque_nm:string engine_torque_rpm:number engine_bore_mm:number engine_stroke_mm:number engine_compression:string engine_fuel:string top_speed_kph:number zero_to_100_kph:number drive:string drive2:string seats:number seats2:number weight_kg:number length_mm:number width_mm:number height_mm:number wheelbase_mm:number lkm_hwy:number lkm_mixed:number lkm_city:number fuel_cap_l:number sold_in_us:boolean co2:string created_at:date updated_at:date forward_collision_warning:number adaptive_cruise_control:number lane_departure_warning:number lane_keeping_assist:number blind_spot_warning:number rear_cross_traffic_alert:number back_up_camera:number adaptive_headlights:number antilock_braking_system:number automatic_emergency_braking:number automatic_parallel_parking:number backup_warning:number biycle_detection:number blind_spot_monitoring:number brake_assist:number curve_speed_warning:number drowsiness_alert:number electronic_stability_control:number high_speed_alert:number hill_descent_assist:number hill_start_assist:number left_turn_crash_avoidance:number pedestrian_detection:number push_button_start:number sideview_camera:number temperature_warning:number tire_pressure_monitoring_system:number traction_control:number obstacle_detection:number
+ember g model version_association version:belongsTo foreign_key_name:string foreign_key:belongsTo
+ember g model version item_type:string item:belongsTo event:string whodunnit:string object:string created_at:date object_changes:string transaction:belongsTo
+ember g model video_hardware video:belongsTo hardware_item:belongsTo created_at:date updated_at:date
+ember g model video title:string video_url:string provider_name:string author:string author_url:string thumbnail_url:string description:string html:string uploaded_at:string created_at:date updated_at:date
+ember g model vote votable_type:string votable:belongsTo voter_type:string voter:belongsTo vote_flag:boolean vote_scope:string vote_weight:number created_at:date updated_at:date
