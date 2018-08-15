@@ -10,9 +10,11 @@ module.exports = function(defaults) {
       'importBootstrapCSS': false
     },
     'fontawesome': {
+      defaultPrefix: 'far',
       icons: {
         'pro-regular-svg-icons': [
           'user',
+          'info-circle',
           'user-circle',
           'align-justify'
         ],

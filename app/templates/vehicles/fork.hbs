@@ -1,0 +1,73 @@
+<h1>Forking {{model.title}}</h1>
+{{#validated-form
+	model=(changeset model VehicleConfigValidations)
+  on-submit    = (action "submit")
+  submit-label = 'Save' as |f|}}
+
+  {{f.input
+    type               = 'select'
+    label              = 'Type'
+    name               = 'vehicleMakePackage'
+    optionValuePath    = "id"
+    optionLabelPath    = "name"
+    value              = selectedMakePackage
+    options            = configMakePackages
+    includeBlank       = 'Please choose...'
+    promptIsSelectable = true
+  }}
+  
+  {{f.input
+    type               = 'select'
+    label              = 'Type'
+    name               = 'vehicleConfigType'
+    optionValuePath    = "id"
+    optionLabelPath    = "name"
+    value              = selectedType
+    options            = configTypes
+    includeBlank       = 'Please choose...'
+    promptIsSelectable = true
+  }}
+
+  {{f.input
+    type               = 'select'
+    label              = 'Status'
+    name               = 'vehicleConfigStatus'
+    optionValuePath    = "id"
+    optionLabelPath    = "name"
+    value              = selectedStatus
+    options            = configStatuses
+    includeBlank       = 'Please choose...'
+    promptIsSelectable = true
+  }}
+
+  {{f.input label="Slug" name="slug"}}
+  {{f.input type="textarea" label="Description" name="description"}}
+  {{f.input label="Year" name="year"}}
+  
+  {{f.input
+    type               = 'select'
+    label              = 'Make'
+    name               = 'vehicleMake'
+    optionValuePath    = "id"
+    optionLabelPath    = "name"
+    value              = selectedMake
+    options            = makes
+    includeBlank       = 'Please choose...'
+    promptIsSelectable = true
+  }}
+
+  {{#if model.vehicleMake}}
+    {{f.input
+      type               = 'select'
+      label              = 'Model'
+      name               = "vehicleModel"
+      optionValuePath    = "id"
+      optionLabelPath    = "name"
+      value              = selectedModel
+      options            = vehicleModels
+      includeBlank       = 'Please choose...'
+      promptIsSelectable = true
+    }}
+  {{/if}}
+  {{f.submit label="Save"}}
+{{/validated-form}}

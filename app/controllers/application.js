@@ -4,15 +4,8 @@ import { alias } from '@ember/object/computed';
 import EmberObject, { computed, get } from '@ember/object';
 
 export default Controller.extend({
-  headData: service(),
-  title: alias("headData.title"),
-  makes: computed(function() {
-    return this.get('store').query('vehicleMake',{
-      filter: {
-        with_configs: true
-      }
-    })
-  }),
+  // pageTitle: "Untitled",
+  
   actions: {
     login () {
      
@@ -21,4 +14,9 @@ export default Controller.extend({
       
     }
   }
-})
+});
+
+Controller.reopen({
+  headData: service(),
+  pageTitle: alias("headData.pageTitle")
+});

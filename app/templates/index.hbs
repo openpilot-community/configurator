@@ -1,3 +1,23 @@
-{{#each model as |configuration|}}
-{{configuration.name}}
+<h1 class="d-none">Openpilot Community Vehicle Database</h1>
+
+{{#bs-accordion as |acc|}}
+{{#each makes as |make|}}
+  {{#acc.item value=make.id title=make.name}}
+    <ul>
+      {{#each make.modelsWithConfigs as |vehicleModel|}}
+      <li>
+        <h3>{{vehicleModel.name}}</h3>
+
+        <ul>
+          {{#each vehicleModel.vehicleConfigs as |config|}}
+          <li>
+            {{#link-to "vehicles.show" config.slug}}{{config.year}} {{config.vehicleMake.name}} {{config.vehicleModel.name}}{{/link-to}}
+          </li>
+          {{/each}}
+        </ul>
+      </li>
+      {{/each}}
+    </ul>
+  {{/acc.item}}
 {{/each}}
+{{/bs-accordion}}

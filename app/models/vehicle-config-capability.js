@@ -4,6 +4,7 @@ export default DS.Model.extend({
   vehicleConfig: DS.belongsTo('vehicle-config'),
   vehicleCapability: DS.belongsTo('vehicle-capability'),
   kph: DS.attr('number'),
+  mph: DS.attr('number'),
   timeout: DS.attr('number'),
   confirmed: DS.attr('boolean'),
   confirmedBy: DS.attr('number'),

@@ -14,6 +14,7 @@ export default DS.Model.extend({
   notes: DS.attr('string'),
   imageUrl: DS.attr('string'),
   installGuideUrl: DS.attr('string'),
+  slug: DS.attr('string'),
   createdAt: DS.attr('date'),
   updatedAt: DS.attr('date')
 });

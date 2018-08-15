@@ -1,2 +1,14 @@
-{{#link-to 'configurations'}}&lt; Back{{/link-to}}
-<h1>{{model.title}}{{#link-to 'configurations.edit' model.id}}Edit{{/link-to}}</h1>
+{{!-- {{#link-to 'configurations'}}&lt; Back{{/link-to}} --}}
+{{!-- {{#link-to "vehicles.edit" model.slug}}Edit Vehicle{{/link-to}} --}}
+{{!-- {{#link-to "vehicles.fork" model.slug}}Fork Vehicle{{/link-to}} --}}
+{{title model.title}}
+<h1>{{model.title}}</h1>
+
+<h2>Configurations</h2>
+
+{{vehicle-config-type model=model}}
+
+<h2>Hardware</h2>
+{{#each model.vehicleConfigHardware as |hardware|}}
+  {{hardware.name}}
+{{/each}}

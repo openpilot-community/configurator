@@ -1,35 +1,63 @@
 import DS from 'ember-data';
-import { validator, buildValidations } from 'ember-cp-validations';
+import { computed } from '@ember/object';
+import { alias, notEmpty } from '@ember/object/computed';
+import Copyable from 'ember-cli-copyable';
+ 
 
-const Validations = buildValidations({
-  year: [
-    validator('presence', true),
-    // validator('length', {
-    //   min: 4,
-    //   max: 8
-    // }),
-    // validator('length', {
-    //   isWarning: true,
-    //   min: 6,
-    //   message: 'Password is weak'
-    // })
-  ],
-  vehicleMake: [
-    validator('presence',true)
-  ],
-  vehicleModel: [
-    validator('presence',true)
-  ]
-  // email: [
-  //   validator('presence', true),
-  //   validator('format', { type: 'email' })
-  // ]
-});
-
-export default DS.Model.extend(Validations,{
-  title: DS.attr('string'),
+export default DS.Model.extend(Copyable, {
+  title: computed("year,makeName,modelName,makePackageName",function() {
+    let year = this.get("year");
+    let makeName = this.get("makeName");
+    let modelName = this.get("modelName");
+    let makePackageName = this.get("makePackageName");
+    let nameParts = [];
+    if (year && makeName && modelName) {
+      nameParts.push(year + "");
+      nameParts.push(makeName);
+      nameParts.push(modelName);
+      if (makePackageName) {
+        nameParts.push("w/ " + makePackageName);
+      }
+      return nameParts.join(" ");
+    }
+  }),
   slug: DS.attr('string'),
+  diffFromParent: DS.attr(),
+  parent: DS.belongsTo('vehicle-config', {
+    inverse: "forks"
+  }),
+  hasParent: notEmpty("parent"),
+  forks: DS.hasMany('vehicle-config', {
+    inverse: "parent"
+  }),
+  makeName: alias("vehicleMake.name"),
+  modelName: alias("vehicleModel.name"),
+  typeName: alias("vehicleConfigType.name"),
+  typeSlug: alias("vehicleConfigType.slug"),
+  makePackageName: alias("vehicleMakePackage.name"),
+  vehicleCapabilities: DS.hasMany(),
   vehicleConfigStatus: DS.belongsTo(),
+  vehicleMakePackage: DS.belongsTo(),
+  vehicleConfigType: DS.belongsTo(),
+  vehicleConfigHardwareItems: DS.hasMany(),
+  vehicleConfigCapabilities: DS.hasMany(),
+  vehicleConfigCapabilitiesWithDiff: computed("hasParent", "vehicleConfigCapabilities.@each", "diffFromParent" ,function() {
+    let vehicleConfigCapabilities = this.get("vehicleConfigCapabilities");
+    let diffFromParent = this.get("diffFromParent");
+    let hasParent = this.get("hasParent");
+
+    if (hasParent && vehicleConfigCapabilities && diffFromParent) {
+
+    } else if (!hasParent && vehicleConfigCapabilities) {
+      return vehicleConfigCapabilities.map((cap) => {
+        cap.set("diff", {
+          operator: "+",
+          
+        })
+      });
+    }
+  })
+  vehicleModelOptions: DS.hasMany(),
   description: DS.attr('string'),
   year: DS.attr('number'),
   vehicleMake: DS.belongsTo('vehicle-make'),

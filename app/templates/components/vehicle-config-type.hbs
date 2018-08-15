@@ -1,0 +1,13 @@
+<h3>{{model.vehicleConfigType.name}}</h3>
+
+{{#each model.vehicleConfigCapabilities as |capability|}}
+  {{vehicle-capability model=capability}}
+{{/each}}
+
+{{component model.componentPath model=model}}
+
+{{#if model.forks}}
+  {{#each model.forks as |fork|}}
+    {{vehicle-config-type model=fork}}
+  {{/each}}
+{{/if}}

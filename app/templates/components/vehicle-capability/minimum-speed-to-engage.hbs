@@ -1,0 +1,7 @@
+{{#unless (eq model.vehicleConfig.typeSlug 'factory')}}
+  The vehicle also has the minimum speed limitation in the {{model.vehicleConfig.typeName}} configuration as well.<br />
+
+  This requires the vehicle to be traveling above {{#if model.mph}}{{model.mph}} mph ({{model.kph}} kph){{else}} a certain speed{{/if}} before you can engage Openpilot.
+{{else}}
+  This means that this particular {{model.vehicleConfig.makeName}} requires the vehicle be traveling above {{#if model.mph}}{{model.mph}} mph ({{model.kph}} kph){{else}} a certain speed{{/if}} before you can engage ACC (Adaptive Cruise Control).
+{{/unless}}
