@@ -6,6 +6,8 @@ export default DS.Model.extend({
   description: DS.attr('string'),
   instructions: DS.attr('string'),
   slug: DS.attr('string'),
+  modificationHardwareTypes: DS.hasMany(),
+  vehicleConfigModifications: DS.hasMany(), 
   createdAt: DS.attr('date'),
   updatedAt: DS.attr('date')
 });

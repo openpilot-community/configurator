@@ -39,7 +39,8 @@ export default DS.Model.extend(Copyable, {
   vehicleConfigStatus: DS.belongsTo(),
   vehicleMakePackage: DS.belongsTo(),
   vehicleConfigType: DS.belongsTo(),
-  vehicleConfigHardwareItems: DS.hasMany(),
+  // vehicleConfigHardwareItems: DS.hasMany(),
+  vehicleConfigModifications: DS.hasMany(),
   vehicleConfigCapabilities: DS.hasMany(),
   vehicleConfigCapabilitiesWithDiff: computed("hasParent", "vehicleConfigCapabilities.@each", "diffFromParent" ,function() {
     let vehicleConfigCapabilities = this.get("vehicleConfigCapabilities");
@@ -47,16 +48,23 @@ export default DS.Model.extend(Copyable, {
     let hasParent = this.get("hasParent");
 
     if (hasParent && vehicleConfigCapabilities && diffFromParent) {
+      return vehicleConfigCapabilities.map((cap) => {
+        cap.set("diff", {
+          operator: "+"
+        })
 
+        return cap;
+      });
     } else if (!hasParent && vehicleConfigCapabilities) {
       return vehicleConfigCapabilities.map((cap) => {
         cap.set("diff", {
-          operator: "+",
-          
+          operator: "+"
         })
+
+        return cap;
       });
     }
-  })
+  }),
   vehicleModelOptions: DS.hasMany(),
   description: DS.attr('string'),
   year: DS.attr('number'),

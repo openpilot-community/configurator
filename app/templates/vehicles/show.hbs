@@ -4,11 +4,4 @@
 {{title model.title}}
 <h1>{{model.title}}</h1>
 
-<h2>Configurations</h2>
-
 {{vehicle-config-type model=model}}
-
-<h2>Hardware</h2>
-{{#each model.vehicleConfigHardware as |hardware|}}
-  {{hardware.name}}
-{{/each}}

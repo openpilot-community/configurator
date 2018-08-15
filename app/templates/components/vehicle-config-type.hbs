@@ -1,8 +1,26 @@
-<h3>{{model.vehicleConfigType.name}}</h3>
+<h2>{{model.vehicleConfigType.name}}</h2>
 
+<h3>Capabilities</h3>
 {{#each model.vehicleConfigCapabilities as |capability|}}
   {{vehicle-capability model=capability}}
 {{/each}}
+
+{{#if model.vehicleConfigModifications}}
+<h4>Modifications Required</h4>
+<ul>
+{{#each model.vehicleConfigModifications as |vehicleConfigModification|}}
+  <li>{{vehicleConfigModification.modification.name}}
+    <ul>
+      {{#each vehicleConfigModification.modification.modificationHardwareTypes as |modificationHardwareType|}}
+      {{#each modificationHardwareType.modificationHardwareTypeHardwareItems as |modHardItem|}}
+      <li>{{modHardItem.hardwareItem.name}}</li>
+      {{/each}}
+      {{/each}}
+      </ul>
+  </li>
+{{/each}}
+</ul>
+{{/if}}
 
 {{component model.componentPath model=model}}
 
@@ -11,3 +29,4 @@
     {{vehicle-config-type model=fork}}
   {{/each}}
 {{/if}}
+

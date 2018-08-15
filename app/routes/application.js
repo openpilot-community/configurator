@@ -7,7 +7,7 @@ export default Route.extend({
   },
   model() {
     return this.get("store").findAll('vehicle-config',{
-      include: "vehicle_make,vehicle_model,vehicle_make_package,vehicle_config_type,vehicle_config_capabilities.vehicle_capability,forks,forks.vehicle_config_capabilities,forks.vehicle_config_type,forks.vehicle_make_package"
+      include: "vehicle_make,vehicle_model,vehicle_make_package,vehicle_config_type,vehicle_config_capabilities.vehicle_capability,forks,forks.vehicle_config_capabilities,forks.vehicle_config_type,forks.vehicle_make_package,vehicle_config_modifications"
     });
   }
 });
