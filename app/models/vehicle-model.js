@@ -1,6 +1,7 @@
 import DS from 'ember-data';
-import { alias } from '@ember/object/computed';
+import { alias, filterBy } from '@ember/object/computed';
 import EmberObject, { computed, get } from '@ember/object';
+
 
 export default DS.Model.extend({
   name: DS.attr('string'),
@@ -15,6 +16,7 @@ export default DS.Model.extend({
     }
   }),
   vehicleConfigs: DS.hasMany(),
+  rootConfigs: filterBy("vehicleConfigs","isFactory"),
   vehicleTrims: DS.hasMany(),
   make: alias("vehicleMake"),
   trims: alias("vehicleTrims"),

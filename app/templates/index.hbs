@@ -9,9 +9,11 @@
         <h3>{{vehicleModel.name}}</h3>
 
         <ul>
-          {{#each vehicleModel.vehicleConfigs as |config|}}
+          {{#each (sort-by "title" vehicleModel.rootConfigs) as |config|}}
           <li>
-            {{#link-to "vehicles.show" config.slug}}{{config.year}} {{config.vehicleMake.name}} {{config.vehicleModel.name}}{{/link-to}}
+            {{#link-to "vehicles.show" config.slug}}
+            {{config.title}}
+            {{/link-to}}
           </li>
           {{/each}}
         </ul>

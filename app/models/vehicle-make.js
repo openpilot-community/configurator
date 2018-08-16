@@ -1,6 +1,5 @@
 import DS from 'ember-data';
 import { alias, filterBy } from '@ember/object/computed';
-
 export default DS.Model.extend({
   name: DS.attr('string'),
   slug: DS.attr('string'),

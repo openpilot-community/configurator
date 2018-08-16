@@ -1,6 +1,6 @@
 import DS from 'ember-data';
 import { computed } from '@ember/object';
-import { alias, notEmpty } from '@ember/object/computed';
+import { alias,equal, notEmpty } from '@ember/object/computed';
 import Copyable from 'ember-cli-copyable';
  
 
@@ -34,6 +34,10 @@ export default DS.Model.extend(Copyable, {
   modelName: alias("vehicleModel.name"),
   typeName: alias("vehicleConfigType.name"),
   typeSlug: alias("vehicleConfigType.slug"),
+  isFactory: equal("typeSlug","factory"),
+  isBasic: equal("typeSlug","basic"),
+  isStandard: equal("typeSlug","standard"),
+  isAdvanced: equal("typeSlug","advanced"),
   makePackageName: alias("vehicleMakePackage.name"),
   vehicleCapabilities: DS.hasMany(),
   vehicleConfigStatus: DS.belongsTo(),

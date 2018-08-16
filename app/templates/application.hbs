@@ -8,10 +8,9 @@
   </div>
 
   {{#navbar.content}}
-    <form class="form-inline my-2 my-lg-0">
+    {{!-- <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      {{!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search or jump to...</button> --}}
-    </form>
+    </form> --}}
     {{#navbar.nav class="mr-auto" as |nav|}}
       {{#nav.item}}{{#nav.link-to "index"}}Vehicles{{/nav.link-to}}{{/nav.item}}
     {{/navbar.nav}}
